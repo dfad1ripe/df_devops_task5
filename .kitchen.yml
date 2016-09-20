@@ -9,8 +9,16 @@ verifier:
   name: inspec
 
 platforms:
-  - name: ubuntu-16.04
-  - name: centos-7.2
+  - name: windows-2012
+    transport:
+      name: winrm
+    driver:
+      guest: :windows
+      box: w2012r2-upd
+      winrm:
+        username: vagrant
+        password: vagrant
+      gui: true
 
 suites:
   - name: default
