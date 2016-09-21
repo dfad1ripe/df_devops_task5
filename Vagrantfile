@@ -81,9 +81,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-  config.vm.provision :chef_solo do |chef|
+  config.vm.provision :chef_zero do |chef|
     chef.data_bags_path = './data_bags'
-    #chef.nodes_path = 'nodes'
+    chef.nodes_path = 'nodes'
     chef.run_list = [
       'recipe[Task5::default]'
     ]

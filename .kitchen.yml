@@ -9,16 +9,9 @@ verifier:
   name: inspec
 
 platforms:
-  - name: windows-2012
+  - name: w2012r2-upd
     transport:
       name: winrm
-    driver:
-      guest: :windows
-      box: w2012r2-upd
-      winrm:
-        username: vagrant
-        password: vagrant
-      gui: true
 
 suites:
   - name: default
