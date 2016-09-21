@@ -9,7 +9,6 @@ VAGRANTFILE_API_VERSION = 2
 
 Vagrant.require_version '>= 1.5.0'
 
-
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
@@ -17,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "w2012r2-upd"
+  config.vm.box = 'w2012r2-upd'
   config.vm.hostname = 'Task5'
 
   # Disable automatic box update checking. If you disable this, then
@@ -54,11 +53,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  config.vm.provider :virtualbox do |v, override|
+  config.vm.provider :virtualbox do |v, _override|
     v.gui = true
-    v.customize ["modifyvm", :id, "--memory", 2048]
-    v.customize ["modifyvm", :id, "--cpus", 2]
-    v.customize ["setextradata", "global", "GUI/SuppressMessages", "all" ]
+    v.customize ['modifyvm', :id, '--memory', 2048]
+    v.customize ['modifyvm', :id, '--cpus', 2]
+    v.customize ['setextradata', 'global', 'GUI/SuppressMessages', 'all']
     v.customize ['modifyvm', :id, '--vram', '32']
     v.customize ['modifyvm', :id, '--cpuexecutioncap', '70']
   end

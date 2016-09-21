@@ -15,31 +15,31 @@ end
 #
 # Install Greenshot from local installer file.
 
-gInstaller = "#{Chef::Config['file_cache_path']}/\
+g_installer = "#{Chef::Config['file_cache_path']}/\
 Greenshot-INSTALLER-1.2.8.12-RELEASE.exe"
 
-gIniFile = "#{Chef::Config['file_cache_path']}\greenshot-defaults.ini"
+g_ini_file = "#{Chef::Config['file_cache_path']}\greenshot-defaults.ini"
 
-cookbook_file gInstaller do
+cookbook_file g_installer do
   source 'Greenshot-INSTALLER-1.2.8.12-RELEASE.exe'
   not_if { File.exist?('C:\Program Files\Greenshot\Greenshot.exe') }
 end
 
-cookbook_file gIniFile do
+cookbook_file g_ini_file do
   source 'greenshot-defaults.ini'
   not_if { File.exist?('C:\Program Files\Greenshot\Greenshot.exe') }
 end
 
 windows_package 'greenshot' do
-  source gInstaller
+  source g_installer
   not_if { File.exist?('C:\Program Files\Greenshot\Greenshot.exe') }
 end
 
-file gInstaller do
+file g_installer do
   action :delete
 end
 
-file gIniFile do
+file g_ini_file do
   action :delete
 end
 
@@ -58,13 +58,18 @@ end
 windows_feature 'Microsoft-Hyper-V' do
   action :install
   all true
-  #not_if { File.exist?('C:\Program Files\Hyper-V\SnapInAbout.dll') }
 end
 
 # This requires a restart typically. We would not.
-# but PowerShell commands would only work after the restart.
+# but PowerShell commands would only work after the restart and
+# starting vmms service as well, as below.
 
-windows_service 'vmms' do
-  action [:configure_startup, :start]
-  startup_type :automatic
-end
+# windows_service 'vmms' do
+#  action [:configure_startup, :start]
+#  startup_type :automatic
+# end
+
+# we can initiate 'delayed' installation of this service by
+# corresponding script, that would: a) restart the system in 5-10 min
+# after the provisioning; and b) enable and start vmms service after
+# the restart.
