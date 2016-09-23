@@ -15,6 +15,9 @@ describe 'Task5::default' do
 
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
+      before do
+        stub_command(/Far.exe/).and_return(true)
+      end
     end
 
     it 'installs "Greenshot"' do
@@ -23,6 +26,9 @@ describe 'Task5::default' do
 
     it 'installs Hyper-V PS module' do
       expect(chef_run).to install_windows_feature('Microsoft-Hyper-V-Management-PowerShell')
+      before do
+        stub_command(/(Far.exe)/).and_return(true)
+      end
     end
   end
 end

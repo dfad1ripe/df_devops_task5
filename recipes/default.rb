@@ -9,7 +9,7 @@
 windows_package 'farmanager' do
   source 'http://www.farmanager.com/files/Far30b4774.x64.20160902.msi'
   installer_type :msi
-  not_if '"C:\Program Files\Far Manager\Far.exe" /?'
+  not_if '"C:/Program Files/Far Manager/Far.exe" /?'
 end
 
 #
