@@ -8,11 +8,6 @@ require 'spec_helper.rb'
 
 describe 'Task5::default' do
   context 'test:' do
-    before(:each) do
-      stub_command(/Far.exe/).and_return(true)
-      stub_command(/Greenshot.exe/).and_return(true)
-    end
-
     let(:chef_run) do
       runner = ChefSpec::ServerRunner.new(platform: 'windows', version: '2012r2')
       runner.converge(described_recipe)

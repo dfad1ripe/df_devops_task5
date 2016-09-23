@@ -13,9 +13,8 @@ packages though worked for :msi.
 
 **Q:** Which one you used and why?
 
-**A:** :msi and :custom, first for a package supplied as .msi, and
-second just to test how it works. For all packages shipped as .exe
-files, allowed chef to pick the installer type automatically.
+**A:** :msi, :inno and :custom, two first for a package supplied as .msi
+or inno inside .exe, and the last just to test how it works.
 
 **Q:** What is difference between windows_package providers?
 
