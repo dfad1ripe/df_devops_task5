@@ -8,7 +8,8 @@
 
 **A:** Per chef documentation, there are no direct limitations, but this
 only makes sense for cases of installer being embedded into some other
-type of file. At least it works instead of :msi (I tested this).
+type of file. In my case however this approach did not work for :inno
+packages though worked for :msi.
 
 **Q:** Which one you used and why?
 
