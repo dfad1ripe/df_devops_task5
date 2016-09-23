@@ -8,8 +8,7 @@ require 'spec_helper.rb'
 
 describe 'Task5::default' do
   context 'test:' do
-
-    before (:each) do
+    before(:each) do
       stub_command(/Far.exe/).and_return(true)
       stub_command(/Greenshot.exe/).and_return(true)
     end
@@ -24,7 +23,7 @@ describe 'Task5::default' do
     end
 
     it 'installs "Greenshot"' do
-      expect(chef_run).to install_windows_package('greenshot')
+      expect(chef_run).to install_windows_package('Greenshot 1.2.8.12')
     end
 
     it 'installs Hyper-V PS module' do

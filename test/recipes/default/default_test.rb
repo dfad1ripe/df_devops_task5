@@ -6,7 +6,7 @@
 # found at https://docs.chef.io/inspec_reference.html
 
 # describe package ('Greenshot 1.2.8.12') do
-#   it { should be_installed }
+#  it { should be_installed }
 # end
 
 describe command('"C:\Program Files\Greenshot\Greenshot.exe" /reload') do
