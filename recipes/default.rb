@@ -16,10 +16,11 @@ end
 # Install Greenshot
 
 windows_package 'greenshot' do
+  action :install
   source 'https://github.com/greenshot/greenshot/releases/download/'\
 'Greenshot-RELEASE-1.2.8.12/Greenshot-INSTALLER-1.2.8.12-RELEASE.exe'
   # installer_type :inno
-  not_if '"C:\Program Files\Greenshot\Greenshot.exe" /reload'
+  not_if '"C:/Program Files/Greenshot/Greenshot.exe" /reload'
 end
 
 #
