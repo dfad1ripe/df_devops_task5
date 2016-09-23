@@ -9,7 +9,6 @@
 windows_package 'farmanager' do
   source 'http://www.farmanager.com/files/Far30b4774.x64.20160902.msi'
   installer_type :msi
-  # not_if { File.exist?('C:\Program Files\Far Manager\Far.exe') }
   not_if '"C:\Program Files\Far Manager\Far.exe" /?'
 end
 
@@ -26,13 +25,15 @@ end
 #
 # Install RSAT Hyper-V PowerShell module
 
-ps_modules = `powershell Get-Module -ListAvailable`
+require 'mixlib/shellout'
+
+ps_mod_cmd = Mixlib::ShellOut.new('powershell Get-Module -ListAvailable')
+ps_mod_cmd.run_command
 
 windows_feature 'Microsoft-Hyper-V-Management-PowerShell' do
   action :install
   all true
-  # not_if { File.exist?('C:\Program Files\Hyper-V\SnapInAbout.dll') }
-  not_if { ps_modules.include? 'Hyper-V' }
+  not_if { ps_mod_cmd.stdout.include? 'Hyper-V' }
 end
 
 #
