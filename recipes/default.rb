@@ -3,16 +3,6 @@
 # Recipe:: default
 
 #
-# Installing Far Manager - just as handy tool to check the results of
-# the later actions.
-
-windows_package 'farmanager' do
-  source 'http://www.farmanager.com/files/Far30b4774.x64.20160902.msi'
-  checksum '15437b76c1735e101f0e674ea8defeb25dc9781d7b3224d77526a0937c63bbdd'
-  installer_type :msi
-end
-
-#
 # Install Greenshot
 
 windows_package 'Greenshot 1.2.8.12' do
@@ -26,11 +16,6 @@ end
 
 #
 # Install RSAT Hyper-V PowerShell module
-
-require 'mixlib/shellout'
-
-ps_mod_cmd = Mixlib::ShellOut.new('powershell Get-Module -ListAvailable')
-ps_mod_cmd.run_command
 
 windows_feature 'Microsoft-Hyper-V-Management-PowerShell' do
   action :install
