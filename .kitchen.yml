@@ -5,9 +5,6 @@ driver:
 provisioner:
   name: chef_zero
 
-verifier:
-  name: inspec
-
 platforms:
   - name: w2012r2-upd
     transport:
