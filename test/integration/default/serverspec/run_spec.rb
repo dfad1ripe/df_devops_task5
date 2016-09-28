@@ -6,10 +6,9 @@
 # found at https://docs.chef.io/inspec_reference.html
 
 require 'serverspec'
-#require 'winrm'
 
-set :backend, :winrm
-set :os, :family => 'windows'
+set :backend, :cmd
+set :os, family: 'windows'
 
 #
 # Canonical test for Greenshot package that does not work.
@@ -21,22 +20,20 @@ end
 #
 # Alternative test for Greenshot package
 
-#describe command('"C:\Program Files\Greenshot\Greenshot.exe" /reload') do
-#  its(:exit_status) { should eq 0 }
-#end
+describe command('C:\Progra~1\Greenshot\Greenshot.exe /reload') do
+  its(:exit_status) { should eq 0 }
+end
 
 #
 # Canonical test for Hyper-V PowerShell module
 
 describe windows_feature('Hyper-V-PowerShell') do
-  it{ should be_installed }
-#  it{ should be_installed.by("dism") }
-#  it{ should be_installed.by("powershell") }
+  it { should be_installed.by('powershell') }
 end
 
 #
 # Alternative test for Hyper-V PowerShell module
 
-#describe command('powershell Get-Module -ListAvailable') do
-#  its(:stdout) { should match 'Hyper-V' }
-#end
+describe command('powershell Get-Module -ListAvailable') do
+  its(:stdout) { should match 'Hyper-V' }
+end
